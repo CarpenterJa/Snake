@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 
 import javax.swing.JPanel;
-
+//
 @SuppressWarnings("serial")
 public class Draw extends JPanel {
 	@Override
