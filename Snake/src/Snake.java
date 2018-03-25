@@ -14,6 +14,7 @@ public class Snake implements ActionListener, KeyListener{
 	public static Snake snake;
 	public Draw draw;
 	public JFrame jframe;
+	public static JFrame end;
 	public Random random;
 	public Timer timer;
 	public boolean gameOver = false;
@@ -112,6 +113,20 @@ public class Snake implements ActionListener, KeyListener{
 					tailLength+=2;
 					
 				}
+			}
+			if(gameOver)
+			{
+				jframe.dispose();
+				EndGame endGame=new EndGame();
+				end=new JFrame("Game Over");
+				end.setVisible(true);
+				end.setSize(800, 800);
+				end.setResizable(false);
+				end.setLocation(550, 125);
+				end.setVisible(true);
+				end.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				end.add(endGame);
+				
 			}
 		}
 		
