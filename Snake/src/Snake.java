@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.Timer;
-//
+
 public class Snake implements ActionListener, KeyListener{
 	public static Snake snake;
 	public Draw draw;
