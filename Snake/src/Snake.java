@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
@@ -62,7 +63,7 @@ public class Snake implements ActionListener, KeyListener{
 	public void actionPerformed(ActionEvent arg0) {
 		draw.repaint();
 		count++;
-		if (count % 3 == 0 && head != null && gameOver != true) {
+		if (count % 2 == 0 && head != null && gameOver != true) {
 			body.add(new Point(head.x, head.y));
 			if (direction == UP) {
 				if (head.y - 1 >= 0 && hitSelf(head.x, head.y - 1)) {
@@ -110,7 +111,7 @@ public class Snake implements ActionListener, KeyListener{
 					{
 					apple.setLocation(random.nextInt(78), random.nextInt(76));
 					}
-					tailLength+=2;
+					tailLength+=10;
 					
 				}
 			}
@@ -126,6 +127,8 @@ public class Snake implements ActionListener, KeyListener{
 				end.setVisible(true);
 				end.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				end.add(endGame);
+				
+			
 				
 			}
 		}
