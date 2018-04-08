@@ -12,6 +12,11 @@ public class Draw extends JPanel {
 		super.paintComponent(g);
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 800, 800);
+		g.setColor(Color.BLUE);
+		g.fillRect(0, 0, 800, 10);
+		g.fillRect(0, 0, 10, 800);
+		g.fillRect(783, 0, 10, 800);
+		g.fillRect(0, 560, 800, 10);
 		Snake snake = Snake.snake;
 		g.setColor(Color.GREEN);
 		for (Point point : snake.body) {
@@ -23,6 +28,6 @@ public class Draw extends JPanel {
 		String s="Score: " + snake.score;
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 16));
-		g.drawString(s, (int) snake.jframe.getWidth() / 2 - s.length() / 2, 15);
+		g.drawString(s, (int) snake.jframe.getWidth() / 2 - s.length() / 2, 20);
 	} 
 }

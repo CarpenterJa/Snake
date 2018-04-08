@@ -30,9 +30,9 @@ public class Snake implements ActionListener, KeyListener{
 		draw = new Draw();
 		timer = new Timer(20, this);
 		jframe.setVisible(true);
-		jframe.setSize(800, 800);
+		jframe.setSize(800, 600);
 		jframe.setResizable(false);
-		jframe.setLocation(550, 125);
+		jframe.setLocation(300, 50);
 
 		jframe.add(draw);
 		jframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -47,7 +47,7 @@ public class Snake implements ActionListener, KeyListener{
 		score=0;
 		tailLength=5;
 		direction=DOWN;
-		head = new Point(0,-1);
+		head = new Point(10,10);
 		random = new Random();
 		body.clear();
 		apple = new Point(random.nextInt(78), random.nextInt(76));
@@ -66,32 +66,48 @@ public class Snake implements ActionListener, KeyListener{
 		if (count % 2 == 0 && head != null && gameOver != true) {
 			body.add(new Point(head.x, head.y));
 			if (direction == UP) {
-				if (head.y - 1 >= 0 && hitSelf(head.x, head.y - 1)) {
+				if(hitSelf(head.x, head.y - 1)==false)
+				{
+					gameOver=true;
+				}
+				if (head.y - 1 >= 1) {
 					head = new Point(head.x, head.y - 1);
 				} else {
-					gameOver = true;
+					direction=LEFT;
 				}
 
 			}
 			if (direction == DOWN) {
-				if (head.y + 1 <=76 && hitSelf(head.x, head.y + 1)) {
+				if(hitSelf(head.x, head.y + 1)==false)
+				{
+					gameOver=true;
+				}
+				if (head.y + 1 <=55) {
 					head=new Point(head.x, head.y + 1);
 				} else {
-					gameOver = true;
+					direction=RIGHT;
 				}
 			}
 			if (direction == RIGHT) {
-				if (head.x + 1 <= 78.5 && hitSelf(head.x + 1, head.y)) {
+				if(hitSelf(head.x + 1, head.y)==false)
+				{
+					gameOver=true;
+				}
+				if (head.x + 1 <= 77) {
 					head=new Point(head.x + 1, head.y);
 				} else {
-					gameOver = true;
+					direction=UP;
 				}
 			}
 			if (direction == LEFT) {
-				if (head.x - 1 >= 0 && hitSelf(head.x - 1, head.y)) {
+				if(hitSelf(head.x - 1, head.y)==false)
+				{
+					gameOver=true;
+				}
+				if (head.x - 1 >= 1)  {
 					head=new Point(head.x - 1, head.y);
 				} else {
-					gameOver = true;
+					direction=DOWN;
 				}
 			}
 			if(body.size() > tailLength)
@@ -109,7 +125,7 @@ public class Snake implements ActionListener, KeyListener{
 					}
 					else
 					{
-					apple.setLocation(random.nextInt(78), random.nextInt(76));
+					apple.setLocation(random.nextInt(75)+2, random.nextInt(53)+2);
 					}
 					tailLength+=10;
 					
@@ -123,7 +139,7 @@ public class Snake implements ActionListener, KeyListener{
 				end.setVisible(true);
 				end.setSize(800, 800);
 				end.setResizable(false);
-				end.setLocation(550, 125);
+				end.setLocation(300, 50);
 				end.setVisible(true);
 				end.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				end.add(endGame);
